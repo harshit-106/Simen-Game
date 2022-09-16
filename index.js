@@ -10,6 +10,15 @@ $(document).keydown(function(){
     nextSequence();
     start=true;
   }
+    $(".start-btn").hide();
+});
+$(".start-btn").click(function(){
+  if(!start){
+    $("#level-title").text("Level "+level);
+    nextSequence();
+    start=true;
+  }
+  $(".start-btn").hide();
 });
 
 $(".btn").click(function(){
@@ -19,6 +28,7 @@ playSound(userChosenColour);
 animatePress(userChosenColour);
 checkAnswer(userClickedPattern.length-1);
 });
+
 
 function checkAnswer(currentLevel){
   if(gamepattern[currentLevel]===userClickedPattern[currentLevel]){
@@ -63,4 +73,5 @@ function startOver(){
   level =0;
   gamepattern=[];
   start=false;
+    $(".start-btn").show();
 }
